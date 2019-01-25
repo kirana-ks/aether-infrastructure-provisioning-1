@@ -4,10 +4,10 @@
 environment: "prod"
 aether:
   kernel:
-    url: https://kernel.gather.kdbs.ng
-odk_url: https://odk.gather.kdbs.ng
-domain: gather.kdbs.ng
-trusted_origins: .gather.kdbs.ng
+    url: https://kernel.gather.aether-axxonet.com
+odk_url: https://odk.gather.aether-axxonet.com
+domain: gather.aether-axxonet.com
+trusted_origins: .gather.aether-axxonet.com
 sentry:
   enabled: true
 app:
@@ -16,14 +16,14 @@ app:
   kernel:
     secret: secrets
   db:
-    user: kaduna_odk
-    name: kaduna_odk
+    user: axxonet_odk
+    name: axxonet_odk
     secret: database-credentials
   tag: 0.11.0
   storage:
     backend: gcs
     bucket:
-      name: kaduna-aether-odk-upload
+      name: axxonet-aether-odk-upload
       credentialsPath: "/secrets/gcp/credentials.json"
       credentialsSecret: "google-bucket-credentials"
 service:
@@ -44,7 +44,7 @@ ingress:
     certmanager.k8s.io/issuer: letsencrypt
 database:
   # set google sql instance name, e.g. modern-rex-207814:europe-west1:gatherdb-instance
-  instance: kdbs-data-col-proj:europe-west2:kaduna-db-instance
+  instance: axxonet-data-col-proj:asia-south1:axxonet-db-instance
 provider:
   aws: false
   gcp: true

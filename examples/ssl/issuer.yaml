@@ -6,7 +6,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: foo@ehealthafrica.org
+    email: kiran.ks@axxonet.net
 
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:

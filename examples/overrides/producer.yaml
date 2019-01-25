@@ -4,21 +4,21 @@
 image:
   repository: ehealthafrica/aether-producer
 environment: "prod"
-kernel_url: https://kernel.gather.kdbs.ng
+kernel_url: https://kernel.gather.aether-axxonet.com
 debug: false
 app:
-  kafkaUrl: "kaduna-kafka.kaduna:9092"
+  kafkaUrl: "axxonet-kafka.axxonet:9092"
   secret: producer-secrets
   db:
-    user: kaduna_producer
-    name: kaduna_producer
+    user: axxonet_producer
+    name: axxonet_producer
   kernel:
-    url: https://kernel.gather.kdbs.ng
+    url: https://kernel.gather.aether-axxonet.com
     db:
-      name: kaduna_kernel
+      name: axxonet_kernel
 database:
   # set google sql instance name, e.g. modern-rex-207814:europe-west1:gatherdb-instance
-  instance: kdbs-data-col-proj:europe-west2:kaduna-db-instance
+  instance: axxonet-data-col-proj:asia-south1:axxonet-db-instance
 provider:
   aws: false
   gcp: true

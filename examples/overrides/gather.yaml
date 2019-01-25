@@ -6,14 +6,14 @@ environment: prod
 provider:
   aws: false
   gcp: true
-domain: gather.kdbs.ng
-trusted_origins: gather.kdbs.ng
+domain: gather.aether-axxonet.com
+trusted_origins: .gather.aether-axxonet.com
 service:
   type: NodePort
 ingress:
   certsecret: wildcard
   hosts:
-    - gather.kdbs.ng
+    - gather.aether-axxonet.com
   ssl:
     letsencrypt: true
     cert_secret: wildcard
@@ -27,16 +27,16 @@ aether_modules: odk,kernel
 aether:
   kernel:
     secret: secrets
-    url: https://kernel.gather.kdbs.ng
+    url: https://kernel.gather.aether-axxonet.com
   odk:
     enabled: true
     secret: secrets
-    url: https://odk.gather.kdbs.ng
+    url: https://odk.gather.aether-axxonet.com
 app:
   db:
     secret: database-credentials
-    user: kaduna_gather
-    name: kaduna_gather
+    user: axxonet_gather
+    name: axxonet_gather
 database:
   # set google sql instance name, e.g. modern-rex-207814:europe-west1:gatherdb-instance
-  instance: kdbs-data-col-proj:europe-west2:kaduna-db-instance
+  instance: axxonet-data-col-proj:asia-south1:axxonet-db-instance

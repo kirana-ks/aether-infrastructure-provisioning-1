@@ -1,6 +1,6 @@
 # terraform {
 #   backend "gcs" {
-#     bucket  = "example-state-bucket" # UPDATE ME
-#     prefix  = "example-project"      # UPDATE ME
+#     bucket  = "axxonet-state-bucket" # UPDATE ME
+#     prefix  = "axxonet-project"      # UPDATE ME
 #   }
 # }

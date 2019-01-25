@@ -2,11 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 environment: prod
-domain: gather.kdbs.ng
+domain: gather.aether-axxonet.com
 ingress:
   certsecret: wildcard
   hosts:
-    - kernel.gather.kdbs.ng
+    - kernel.gather.aether-axxonet.com
   ssl:
     letsencrypt: true
     cert_secret: wildcard
@@ -25,20 +25,21 @@ sentry:
 service:
   type: LoadBalancer
 database:
-  instance: kdbs-data-col-proj:europe-west2:kaduna-db-instance
+  instance: axxonet-data-col-proj:asia-south1:axxonet-db-instance
+  
 app:
   tag: 0.11.0
   secret: secrets
-  url: https://kernel.gather.kdbs.ng
+  url: https://kernel.gather.aether-axxonet.com
   storage:
     backend: gcs
     bucket:
-      name: kaduna-aether-kernel-upload
+      name: axxonet-aether-kernel-upload
       credentialsPath: "/secrets/gcp/credentials.json"
       credentialsSecret: "google-bucket-credentials"
   db:
     host: 127.0.0.1
     secret: database-credentials
-    user: kaduna_kernel
-    name: kaduna_kernel
-    readonly_user: kaduna_kernel_ro
+    user: axxonet_kernel
+    name: axxonet_kernel
+    readonly_user: axxonet_kernel_ro

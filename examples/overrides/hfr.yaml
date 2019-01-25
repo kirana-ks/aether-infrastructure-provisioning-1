@@ -15,22 +15,22 @@ app:
   static_root: /var/www/static
   db:
     host: 127.0.0.1
-    name: kaduna_hfr
+    name: axxonet_hfr
     secret: database-credentials
-    user: kaduna_hfr
+    user: axxonet_hfr
     port: 5432
   email:
     backend: django.core.mail.backends.smtp.EmailBackend
     port: 587
     user: AKIAIO6VL47UF2ACTYHQ
     tls: True
-  url: https://hfr-api.gather.kdbs.ng
+  url: https://hfr-api.gather.aether-axxonet.com
   command: start
 
-domain: gather.kdbs.ng
+domain: gather.aether-axxonet.com
 
 database:
-  instance: kdbs-data-col-proj:europe-west2:kaduna-db-instance
+  instance: axxonet-data-col-proj:asia-south1:axxonet-db-instance
 
 imagePullSecrets:
   name: aws-ecr-credentials
@@ -48,7 +48,7 @@ service:
 ingress:
   certsecret: wildcard
   hosts:
-    - hfr-api.gather.kdbs.ng
+    - hfr-api.gather.aether-axxonet.com
   ssl:
     letsencrypt: true
     cert_secret: wildcard
