@@ -1,5 +1,19 @@
-variable "google_project" {}
-variable "google_region" { default="europe-west1" }
-variable "google_zone" {}
-variable "admin_user" {}
-variable "admin_password" {}
+variable "google_region" { default="asia-south1" }
+variable "google_zone" { default="asia-south1-a"}
+variable "additional_google_zone" { default="asia-south1-c"}
+variable "admin_user" { default="admin" }
+variable "google_project" {default="aether-dev-233810"}
+variable "admin_password" {default="sdfsdfsdff3354435xdsfddgf"}
+variable "project" { default="aether-dev" }
+variable "domain" { default="aether-axxonet.com" }
+variable "postgres_root_username" { default="postgres" }
+variable "postgres_root_password" {default="postgres"}
+variable "namespace" {default="axxonet"}
+variable "cluster" {default="gathercluster"}
+variable "pool_name" {default="app-pool"}
+variable "cluster_node_type" {default="n1-standard-1"}
+variable "node_pool_role" {default="app"}
+variable "cluster_node_disk_size" {default="10"}
+variable "node_count" {default="1"}
+variable "initial_node_count" {default="1"}
+

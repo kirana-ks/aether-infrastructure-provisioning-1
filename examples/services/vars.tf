@@ -1,0 +1,15 @@
+variable "google_region" { default="asia-south1" }
+variable "google_zone" { default="asia-south1-a"}
+variable "admin_user" { default="admin" }
+variable "google_project" { default="aether-dev-233810" }
+variable "admin_password" { default="oa2zao0yeezau0xaeYe3oedu3aiphu" }
+variable "namespace" { default="axxonet" }
+variable "domain" { default="aether-axxonet.com" }
+variable "dns_provider" { default="gcloud" }
+variable "project" { default="aether-dev" }
+variable "kernel_chart_name" { default="aether-kernel" }
+variable "kernel_chart_version" { default="1.2.0" }
+variable "odk_chart_name" { default="aether-odk" }
+variable "odk_chart_version" { default="1.2.0" }
+variable "gather_chart_name" { default="gather" }
+variable "gather_chart_version" { default="3.1.0" }

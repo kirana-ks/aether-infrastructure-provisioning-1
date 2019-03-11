@@ -1,77 +1,56 @@
-# Google GKE Cluster and Node Pool
+#Google GKE Cluster and Node Pool
 module "gke_cluster" {
   source = "../modules/gke_cluster"
   google_zone = "${var.google_zone}"
+  google_region = "${var.google_region}"
   google_project = "${var.google_project}"
-  cluster_name = "axxonet" # UPDATE ME
-  initial_node_count = 1
-  additional_zones = "${var.google_zone}-c"
+  cluster_name = "${var.cluster}"
+  initial_node_count = "${var.initial_node_count}"
+  additional_zones = "${var.additional_google_zone}"
   admin_user = "${var.admin_user}"
-  admin_password = "${var.admin_password}" # UPDATE ME
+  admin_password = "${var.admin_password}"
 }
 
 module "gke_node_pool" {
   source = "../modules/gke_node_pool"
   cluster_name = "${module.gke_cluster.cluster_name}"
   google_zone = "${var.google_zone}"
-  pool_name = "app-pool"
-  node_count = 1
-  cluster_node_type = "n1-standard-1"
+  pool_name = "${var.pool_name}"
+  node_count = "${var.node_count}"
+  cluster_node_type = "${var.cluster_node_type}"
   google_project = "${var.google_project}"
-  cluster_node_disk_size = 20
-  node_pool_role = "app"
+  cluster_node_disk_size = "${var.cluster_node_disk_size}"
+  node_pool_role = "${var.node_pool_role}"
 }
 
 module "postgres" {
   source = "../modules/postgres"
   google_project = "${var.google_project}"
   google_region = "${var.google_region}"
-  postgres_password = "axxonet" # UPDATE ME
+  postgres_root_password = "${var.postgres_root_password}"
+  database_instance_name = "${var.google_project}"
+  databases = ["${var.project}_odk","${var.project}_gather","${var.project}_kernel"]
+  namespace = "${var.project}"
 }
 
-# Helm modules
-module "system_modules" {
-  source = "../modules/helm/system-modules"
-  domain = "aether-axxonet.com" # UPDATE ME
-  google_project = "${var.google_project}"
-  google_zone = "${var.google_zone}"
-  cluster_name = "${module.gke_cluster.cluster_name}"
-  admin_user = "${var.admin_user}"
-  admin_password = "${var.admin_password}" # UPDATE ME
+# Bucket storage
+module "aether_odk_storage" {
+  source = "../modules/gcs_bucket"
+  gcs_bucket_name = "aether-odk"
+  gcs_bucket_credentials = "${var.namespace}-bucket-credentials"
+  namespace = "${var.namespace}"
 }
 
-# Aether
-module "aether_kernel" {
-  source = "../modules/helm/aether"
-  chart_name = "aether-kernel"
-  chart_version = "1.2.0"
-  namespace = "axxonet" 
+module "aether_kernel_storage" {
+  source = "../modules/gcs_bucket"
+  gcs_bucket_name = "aether-kernel"
+  gcs_bucket_credentials = "${var.namespace}-bucket-credentials"
+  namespace = "${var.namespace}"
 }
 
-module "aether_odk" {
-  source = "../modules/helm/aether"
-  chart_name = "aether-odk"
-  chart_version = "1.2.0"
-  namespace = "axxonet" 
-}
-
-module "gather" {
-  source = "../modules/helm/aether"
-  chart_name = "gather"
-  chart_version = "3.1.0"
-  namespace = "axxonet" 
-}
-
-module "aether-ui" {
-  source = "../modules/helm/aether"
-  chart_name = "aether-ui"
-  chart_version = "1.2.0"
-  namespace = "axxonet" 
-}
-
-module "aether-producer" {
-  source = "../modules/helm/aether"
-  chart_name = "aether-producer"
-  chart_version = "1.2.0"
-  namespace = "axxonet" 
+# DNS IAM auth
+module "iam-dns-aws" {
+  source = "../modules/iam-dns-aws"
+  cluster_name = "${var.namespace}"
+  domain = "${var.domain}"
 }

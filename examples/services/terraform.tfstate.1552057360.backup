@@ -1,0 +1,41 @@
+{
+    "version": 3,
+    "terraform_version": "0.11.11",
+    "serial": 9,
+    "lineage": "68bb1c3d-919d-f6ae-fd8a-db393d4e691e",
+    "modules": [
+        {
+            "path": [
+                "root"
+            ],
+            "outputs": {},
+            "resources": {
+                "kubernetes_namespace.namespace": {
+                    "type": "kubernetes_namespace",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "axxonet",
+                        "attributes": {
+                            "id": "axxonet",
+                            "metadata.#": "1",
+                            "metadata.0.annotations.%": "1",
+                            "metadata.0.annotations.name": "axxonet",
+                            "metadata.0.generate_name": "",
+                            "metadata.0.generation": "0",
+                            "metadata.0.labels.%": "0",
+                            "metadata.0.name": "axxonet",
+                            "metadata.0.resource_version": "9620",
+                            "metadata.0.self_link": "/api/v1/namespaces/axxonet",
+                            "metadata.0.uid": "b5ca3cb8-40e9-11e9-a5e6-42010a84027b"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.kubernetes"
+                }
+            },
+            "depends_on": []
+        }
+    ]
+}
