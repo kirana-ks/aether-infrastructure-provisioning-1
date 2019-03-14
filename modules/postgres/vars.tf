@@ -3,7 +3,7 @@ variable "database_version" {
 }
 
 variable "database_size" {
-  default = "5"
+  default = "10"
 }
 
 variable "db_instance_type" {
